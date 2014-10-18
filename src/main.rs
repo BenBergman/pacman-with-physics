@@ -25,25 +25,27 @@ fn main() {
     /*
      * First plane
      */
-    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(-1.0f32, -1.0)), 0.3, 0.6);
+    fn make_first_plane() -> RigidBody {
+        let mut rb = RigidBody::new_static(Plane::new(Vec2::new(-1.0f32, -1.0)), 0.3, 0.6);
+        rb.append_translation(&Vec2::new(0.0, 10.0));
+        return rb
+    }
 
-    rb.append_translation(&Vec2::new(0.0, 10.0));
-
-    world.add_body(rb);
+    world.add_body(make_first_plane());
 
     /*
      * Second plane
      */
-    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(1.0f32, -1.0)), 0.3, 0.6);
+    let mut rb2 = RigidBody::new_static(Plane::new(Vec2::new(1.0f32, -1.0)), 0.3, 0.6);
 
-    rb.append_translation(&Vec2::new(0.0, 10.0));
+    rb2.append_translation(&Vec2::new(0.0, 10.0));
 
-    world.add_body(rb);
+    world.add_body(rb2);
 
     /*
      * Create the balls
      */
-    let num     = (4000.0f32.sqrt()) as uint;
+    let num     = (400.0f32.sqrt()) as uint;
     let rad     = 0.5;
     let shift   = 2.5 * rad;
     let centerx = shift * (num as f32) / 2.0;
@@ -54,11 +56,11 @@ fn main() {
             let x = i as f32 * 2.5 * rad - centerx;
             let y = j as f32 * 2.5 * rad - centery * 2.0 - 20.0;
 
-            let mut rb = RigidBody::new_dynamic(Ball::new(rad), 1.0f32, 0.3, 0.6);
+            let mut rb3 = RigidBody::new_dynamic(Ball::new(rad), 1.0f32, 0.3, 0.6);
 
-            rb.append_translation(&Vec2::new(x, y));
+            rb3.append_translation(&Vec2::new(x, y));
 
-            world.add_body(rb);
+            world.add_body(rb3);
         }
     }
 
