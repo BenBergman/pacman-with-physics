@@ -27,7 +27,6 @@ fn main() {
      * World
      */
     let mut world = World::new();
-    world.set_gravity(Vec2::new(0.0f32, 0.0));
 
     world.add_body(make_wall(Vec2::new(-1.0f32, 0.0), Vec2::new(30.0, 0.0)));
     world.add_body(make_wall(Vec2::new(1.0f32, 0.0), Vec2::new(-30.0, 0.0)));
