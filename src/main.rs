@@ -36,18 +36,18 @@ fn main() {
     /*
      * Create the balls
      */
-    let num     = (400.0f32.sqrt()) as uint;
-    let rad     = 0.5;
-    let shift   = 5.0 * rad;
-    let centerx = shift * (num as f32) / 2.0;
-    let centery = shift * (num as f32) / 2.0;
+    let side_length_in_balls     = (400.0f32.sqrt()) as uint;
+    let ball_radius     = 0.5;
+    let ball_spacing   = 5.0 * ball_radius;
+    let center_x = ball_spacing * (side_length_in_balls as f32) / 2.0;
+    let center_y = ball_spacing * (side_length_in_balls as f32) / 2.0;
 
-    for i in range(0u, num) {
-        for j in range(0u, num) {
-            let x = i as f32 * shift - centerx;
-            let y = j as f32 * shift - centery;
+    for i in range(0u, side_length_in_balls) {
+        for j in range(0u, side_length_in_balls) {
+            let x = i as f32 * ball_spacing - center_x;
+            let y = j as f32 * ball_spacing - center_y;
 
-            let mut rb3 = RigidBody::new_dynamic(Ball::new(rad), 1.0f32, 0.3, 0.6);
+            let mut rb3 = RigidBody::new_dynamic(Ball::new(ball_radius), 1.0f32, 0.3, 0.6);
 
             rb3.append_translation(&Vec2::new(x, y));
 
