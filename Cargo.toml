@@ -6,8 +6,7 @@ authors = ["Benjamin Bergman <ben@benbergman.ca>"]
 
 [dependencies.nphysics2df32]
 git = "https://github.com/sebcrozet/nphysics"
-path = "build/nphysics2df32"
+path = "./build/nphysics2df32"
 
 [dependencies.nphysics_testbed2d]
-git = "https://github.com/sebcrozet/nphysics"
-path = "examples2d/nphysics_testbed2d"
+path = "src/nphysics_testbed2d"

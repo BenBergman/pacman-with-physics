@@ -1,0 +1,14 @@
+[package]
+name    = "nphysics_testbed2d"
+version = "0.1.0"
+authors = [ "Sébastien Crozet <developer@crozet.re>" ]
+
+[lib]
+name = "nphysics_testbed2d"
+
+[dependencies.nphysics2df32]
+git = "https://github.com/sebcrozet/nphysics"
+path = "./build/nphysics2df32"
+
+[dependencies.rust-sfml]
+git = "https://github.com/jeremyletang/rust-sfml"

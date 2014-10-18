@@ -3,7 +3,7 @@ name = "pacman-with-physics"
 version = "0.0.1"
 dependencies = [
  "nphysics2df32 0.1.0 (git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09)",
- "nphysics_testbed2d 0.1.0 (git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09)",
+ "nphysics_testbed2d 0.1.0",
 ]
 
 [[package]]
@@ -31,7 +31,6 @@ dependencies = [
 [[package]]
 name = "nphysics_testbed2d"
 version = "0.1.0"
-source = "git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09"
 dependencies = [
  "nphysics2df32 0.1.0 (git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09)",
  "rust-sfml 0.9.0 (git+https://github.com/jeremyletang/rust-sfml#192810c53b5c5f90230b0bbd08f0d1bacd156823)",
