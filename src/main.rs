@@ -6,6 +6,7 @@ extern crate nphysics_testbed2d;
 
 use na::{Vec2, Translation};
 use ncollide::geom::{Ball, Plane};
+use ncollide::math::{Vect};
 use nphysics::world::World;
 use nphysics::object::RigidBody;
 use nphysics_testbed2d::Testbed;
@@ -15,6 +16,12 @@ fn start(argc: int, argv: *const *const u8) -> int {
     native::start(argc, argv, main)
 }
 
+fn make_wall(plane_vector: Vect, translation_vector: Vect) -> RigidBody {
+    let mut rb = RigidBody::new_static(Plane::new(plane_vector), 0.3, 0.6);
+    rb.append_translation(&translation_vector);
+    return rb
+}
+
 fn main() {
     /*
      * World
@@ -22,43 +29,10 @@ fn main() {
     let mut world = World::new();
     world.set_gravity(Vec2::new(0.0f32, 0.0));
 
-    /*
-     * First plane
-     */
-    fn make_first_plane() -> RigidBody {
-        let mut rb = RigidBody::new_static(Plane::new(Vec2::new(-1.0f32, 0.0)), 0.3, 0.6);
-        rb.append_translation(&Vec2::new(30.0, 0.0));
-        return rb
-    }
-
-    world.add_body(make_first_plane());
-
-    /*
-     * Second plane
-     */
-    let mut rb2 = RigidBody::new_static(Plane::new(Vec2::new(1.0f32, 0.0)), 0.3, 0.6);
-
-    rb2.append_translation(&Vec2::new(-30.0, 0.0));
-
-    world.add_body(rb2);
-
-    /*
-     * Third plane
-     */
-    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(0.0f32, -1.0)), 0.3, 0.6);
-
-    rb.append_translation(&Vec2::new(0.0, 30.0));
-
-    world.add_body(rb);
-
-    /*
-     * Fourth plane
-     */
-    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(0.0f32, 1.0)), 0.3, 0.6);
-
-    rb.append_translation(&Vec2::new(0.0, -30.0));
-
-    world.add_body(rb);
+    world.add_body(make_wall(Vec2::new(-1.0f32, 0.0), Vec2::new(30.0, 0.0)));
+    world.add_body(make_wall(Vec2::new(1.0f32, 0.0), Vec2::new(-30.0, 0.0)));
+    world.add_body(make_wall(Vec2::new(0.0f32, -1.0), Vec2::new(0.0, 30.0)));
+    world.add_body(make_wall(Vec2::new(0.0f32, 1.0), Vec2::new(0.0, -30.0)));
 
     /*
      * Create the balls
