@@ -20,39 +20,57 @@ fn main() {
      * World
      */
     let mut world = World::new();
-    world.set_gravity(Vec2::new(0.0f32, 9.81));
+    world.set_gravity(Vec2::new(0.0f32, 0.0));
 
     /*
      * First plane
      */
-    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(-1.0f32, -1.0)), 0.3, 0.6);
+    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(-1.0f32, 0.0)), 0.3, 0.6);
 
-    rb.append_translation(&Vec2::new(0.0, 10.0));
+    rb.append_translation(&Vec2::new(30.0, 0.0));
 
     world.add_body(rb);
 
     /*
      * Second plane
      */
-    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(1.0f32, -1.0)), 0.3, 0.6);
+    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(1.0f32, 0.0)), 0.3, 0.6);
 
-    rb.append_translation(&Vec2::new(0.0, 10.0));
+    rb.append_translation(&Vec2::new(-30.0, 0.0));
+
+    world.add_body(rb);
+
+    /*
+     * Third plane
+     */
+    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(0.0f32, -1.0)), 0.3, 0.6);
+
+    rb.append_translation(&Vec2::new(0.0, 30.0));
+
+    world.add_body(rb);
+
+    /*
+     * Fourth plane
+     */
+    let mut rb = RigidBody::new_static(Plane::new(Vec2::new(0.0f32, 1.0)), 0.3, 0.6);
+
+    rb.append_translation(&Vec2::new(0.0, -30.0));
 
     world.add_body(rb);
 
     /*
      * Create the balls
      */
-    let num     = (4000.0f32.sqrt()) as uint;
+    let num     = (400.0f32.sqrt()) as uint;
     let rad     = 0.5;
-    let shift   = 2.5 * rad;
+    let shift   = 5.0 * rad;
     let centerx = shift * (num as f32) / 2.0;
     let centery = shift * (num as f32) / 2.0;
 
     for i in range(0u, num) {
         for j in range(0u, num) {
-            let x = i as f32 * 2.5 * rad - centerx;
-            let y = j as f32 * 2.5 * rad - centery * 2.0 - 20.0;
+            let x = i as f32 * shift - centerx;
+            let y = j as f32 * shift - centery;
 
             let mut rb = RigidBody::new_dynamic(Ball::new(rad), 1.0f32, 0.3, 0.6);
 
