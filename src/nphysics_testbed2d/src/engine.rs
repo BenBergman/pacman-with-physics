@@ -19,7 +19,7 @@ use objects::lines::Lines;
 pub enum SceneNode<'a> {
     BallNode(Ball<'a>),
     BoxNode(Box<'a>),
-    LinesNode(Lines)
+    LinesNode(Lines<'a>)
 }
 
 impl<'a> SceneNode<'a> {

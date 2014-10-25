@@ -9,7 +9,7 @@ use nphysics::object::RigidBody;
 use draw_helper::draw_line;
 
 
-pub struct Lines {
+pub struct Lines<'a> {
     color: Pnt3<u8>,
     base_color: Pnt3<u8>,
     delta: Iso2<f32>,
@@ -19,12 +19,12 @@ pub struct Lines {
 }
 
 
-impl Lines {
+impl<'a> Lines<'a> {
     pub fn new(body:     Rc<RefCell<RigidBody>>,
                delta:    Iso2<f32>,
                vertices: Arc<Vec<Pnt2<f32>>>,
                indices:  Arc<Vec<uint>>,
-               color:    Pnt3<u8>) -> Lines {
+               color:    Pnt3<u8>) -> Lines<'a> {
         Lines {
             color: color,
             base_color: color,
@@ -37,7 +37,7 @@ impl Lines {
 }
 
 
-impl Object for Lines {
+impl<'a> Object for Lines<'a> {
     fn update(&mut self) {
     }
 
