@@ -1,3 +1,4 @@
+use objects::objects::Object;
 use std::rc::Rc;
 use std::cell::RefCell;
 use rsfml::graphics;
@@ -41,8 +42,8 @@ impl<'a> Box<'a> {
     }
 }
 
-impl<'a> Box<'a> {
-    pub fn update(&mut self) {
+impl<'a> Object for Box<'a> {
+    fn update(&mut self) {
         let body     = self.body.borrow();
         let transform = body.transform_ref() * self.delta;
         let pos = na::translation(&transform);
@@ -64,15 +65,15 @@ impl<'a> Box<'a> {
         }
     }
 
-    pub fn draw(&self, rw: &mut graphics::RenderWindow) {
+    fn draw(&self, rw: &mut graphics::RenderWindow) {
         rw.draw(&self.gfx);
     }
 
-    pub fn select(&mut self) {
+    fn select(&mut self) {
         self.color = Pnt3::new(200, 0, 0);
     }
 
-    pub fn unselect(&mut self) {
+    fn unselect(&mut self) {
         self.color = self.base_color;
     }
 }
