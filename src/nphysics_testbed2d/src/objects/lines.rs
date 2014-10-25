@@ -1,3 +1,4 @@
+use objects::objects::Object;
 use std::rc::Rc;
 use std::cell::RefCell;
 use sync::Arc;
@@ -33,11 +34,11 @@ impl Lines {
     }
 }
 
-impl Lines {
-    pub fn update(&mut self) {
+impl Object for Lines {
+    fn update(&mut self) {
     }
 
-    pub fn draw(&self, rw: &mut graphics::RenderWindow) {
+    fn draw(&self, rw: &mut graphics::RenderWindow) {
         let body      = self.body.borrow();
         let transform = body.transform_ref() * self.delta;
 
@@ -50,11 +51,11 @@ impl Lines {
         }
     }
 
-    pub fn select(&mut self) {
+    fn select(&mut self) {
         self.color = Pnt3::new(200, 0, 0);
     }
 
-    pub fn unselect(&mut self) {
+    fn unselect(&mut self) {
         self.color = self.base_color;
     }
 }
