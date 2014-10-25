@@ -13,13 +13,15 @@ use ncollide::geom;
 use camera::Camera;
 use objects::objects::Object;
 use objects::ball::Ball;
+use objects::ghost::Ghost;
 use objects::box_node::Box;
 use objects::lines::Lines;
 
 pub enum SceneNode<'a> {
     BallNode(Ball<'a>),
     BoxNode(Box<'a>),
-    LinesNode(Lines<'a>)
+    LinesNode(Lines<'a>),
+    GhostNode(Ghost<'a>),
 }
 
 impl<'a> SceneNode<'a> {
@@ -28,6 +30,7 @@ impl<'a> SceneNode<'a> {
             BallNode(ref mut n) => n.select(),
             BoxNode(ref mut n) => n.select(),
             LinesNode(ref mut n) => n.select(),
+            GhostNode(ref mut n) => n.select(),
         }
     }
 
@@ -36,6 +39,7 @@ impl<'a> SceneNode<'a> {
             BallNode(ref mut n) => n.unselect(),
             BoxNode(ref mut n) => n.unselect(),
             LinesNode(ref mut n) => n.unselect(),
+            GhostNode(ref mut n) => n.unselect(),
         }
     }
 }
@@ -124,6 +128,16 @@ impl<'a> GraphicsManager<'a> {
         out.push(BallNode(Ball::new(body, delta, geom.radius() + margin, color)))
     }
 
+    fn add_ghost(&mut self,
+                body:  Rc<RefCell<RigidBody>>,
+                delta: Iso2<f32>,
+                geom:  &geom::Ghost,
+                out:   &mut Vec<SceneNode>) {
+        let color = self.color_for_object(&body);
+        let margin = body.borrow().margin();
+        out.push(GhostNode(Ghost::new(body, delta, geom.radius() + margin, color)))
+    }
+
     fn add_lines(&mut self,
                body:  Rc<RefCell<RigidBody>>,
                delta: Iso2<f32>,
@@ -166,6 +180,7 @@ impl<'a> GraphicsManager<'a> {
                     BoxNode(ref mut b)   => b.update(),
                     BallNode(ref mut b)  => b.update(),
                     LinesNode(ref mut l) => l.update(),
+                    GhostNode(ref mut l) => l.update(),
                 }
             }
         }
@@ -176,6 +191,7 @@ impl<'a> GraphicsManager<'a> {
                     BoxNode(ref b)   => b.draw(rw),
                     BallNode(ref b)  => b.draw(rw),
                     LinesNode(ref l) => l.draw(rw),
+                    GhostNode(ref l) => l.draw(rw),
                 }
             }
         }
