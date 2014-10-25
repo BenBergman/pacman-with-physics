@@ -11,7 +11,8 @@ use nphysics::object::RigidBody;
 use ncollide::geom::Geom;
 use ncollide::geom;
 use camera::Camera;
-use objects::ball::Ball;
+use objects::objects::Object;
+use objects::objects::Ball;
 use objects::box_node::Box;
 use objects::lines::Lines;
 

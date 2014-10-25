@@ -8,6 +8,15 @@ use na;
 use nphysics::object::RigidBody;
 use draw_helper::DRAW_SCALE;
 
+
+pub trait Object {
+    fn select(&mut self);
+    fn unselect(&mut self);
+    fn update(&mut self);
+    fn draw(&self, rw: &mut graphics::RenderWindow);
+}
+
+
 pub struct Ball<'a> {
     color: Pnt3<u8>,
     base_color: Pnt3<u8>,
@@ -15,6 +24,7 @@ pub struct Ball<'a> {
     body:  Rc<RefCell<RigidBody>>,
     gfx:   CircleShape<'a>
 }
+
 
 impl<'a> Ball<'a> {
     pub fn new(body:   Rc<RefCell<RigidBody>>,
@@ -33,14 +43,15 @@ impl<'a> Ball<'a> {
 
         res.gfx.set_fill_color(&Color::new_RGB(color.x, color.y, color.z));
         res.gfx.set_radius(dradius);
-        res.gfx.set_origin(&vector2::Vector2f { x: dradius, y: dradius }); 
+        res.gfx.set_origin(&vector2::Vector2f { x: dradius, y: dradius });
 
         res
     }
 }
 
-impl<'a> Ball<'a> {
-    pub fn update(&mut self) {
+
+impl<'a> Object for Ball<'a> {
+    fn update(&mut self) {
         let body = self.body.borrow();
         let transform = body.transform_ref() * self.delta;
         let pos = na::translation(&transform);
@@ -62,15 +73,15 @@ impl<'a> Ball<'a> {
         }
     }
 
-    pub fn draw(&self, rw: &mut graphics::RenderWindow) {
+    fn draw(&self, rw: &mut graphics::RenderWindow) {
         rw.draw(&self.gfx);
     }
 
-    pub fn select(&mut self) {
+    fn select(&mut self) {
         self.color = Pnt3::new(200, 0, 0);
     }
 
-    pub fn unselect(&mut self) {
+    fn unselect(&mut self) {
         self.color = self.base_color;
     }
 }

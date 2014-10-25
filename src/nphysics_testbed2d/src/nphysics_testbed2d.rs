@@ -20,7 +20,7 @@ mod fps;
 mod draw_helper;
 
 mod objects {
-    pub mod ball;
+    pub mod objects;
     pub mod box_node;
     pub mod lines;
 }
