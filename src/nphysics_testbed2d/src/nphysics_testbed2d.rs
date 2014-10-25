@@ -21,6 +21,7 @@ mod draw_helper;
 
 mod objects {
     pub mod objects;
+    pub mod ball;
     pub mod box_node;
     pub mod lines;
 }

@@ -12,7 +12,7 @@ use ncollide::geom::Geom;
 use ncollide::geom;
 use camera::Camera;
 use objects::objects::Object;
-use objects::objects::Ball;
+use objects::ball::Ball;
 use objects::box_node::Box;
 use objects::lines::Lines;
 
