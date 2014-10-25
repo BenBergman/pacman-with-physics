@@ -8,6 +8,7 @@ use na::{Pnt2, Pnt3, Iso2};
 use nphysics::object::RigidBody;
 use draw_helper::draw_line;
 
+
 pub struct Lines {
     color: Pnt3<u8>,
     base_color: Pnt3<u8>,
@@ -16,6 +17,7 @@ pub struct Lines {
     indices: Arc<Vec<uint>>,
     vertices: Arc<Vec<Pnt2<f32>>>
 }
+
 
 impl Lines {
     pub fn new(body:     Rc<RefCell<RigidBody>>,
@@ -33,6 +35,7 @@ impl Lines {
         }
     }
 }
+
 
 impl Object for Lines {
     fn update(&mut self) {
