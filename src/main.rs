@@ -5,8 +5,7 @@ extern crate "nphysics2df32" as nphysics;
 extern crate nphysics_testbed2d;
 
 use na::{Vec2, Translation};
-use ncollide::geom::{Ball, Plane};
-use ncollide::math::{Vect};
+use ncollide::shape::{Ball, Plane};
 use nphysics::world::World;
 use nphysics::object::RigidBody;
 use nphysics_testbed2d::Testbed;
@@ -16,7 +15,7 @@ fn start(argc: int, argv: *const *const u8) -> int {
     native::start(argc, argv, main)
 }
 
-fn make_wall(plane_vector: Vect, translation_vector: Vect) -> RigidBody {
+fn make_wall(plane_vector: Vec2<f32>, translation_vector: Vec2<f32>) -> RigidBody {
     let mut rb = RigidBody::new_static(Plane::new(plane_vector), 0.3, 0.6);
     rb.append_translation(&translation_vector);
     return rb

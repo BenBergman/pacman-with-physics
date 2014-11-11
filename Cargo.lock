@@ -2,42 +2,42 @@
 name = "pacman-with-physics"
 version = "0.0.1"
 dependencies = [
- "nphysics2df32 0.1.0 (git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09)",
+ "nphysics2df32 0.1.0 (git+https://github.com/sebcrozet/nphysics)",
  "nphysics_testbed2d 0.1.0",
 ]
 
 [[package]]
 name = "nalgebra"
 version = "0.1.0"
-source = "git+https://github.com/sebcrozet/nalgebra#8288ebdfabdab002df9b47429fa176850b945f51"
+source = "git+https://github.com/sebcrozet/nalgebra#15d1fa0b8b012cc1e5cf365b0eb64c7089e93e32"
 
 [[package]]
 name = "ncollide"
-version = "0.1.0"
-source = "git+https://github.com/sebcrozet/ncollide#faa6a51c1e15b97c773b1ebae926f007cc3737bf"
+version = "0.2.0"
+source = "git+https://github.com/sebcrozet/ncollide#4a44be3d0309668b7346f01d536e46b879f6342c"
 dependencies = [
- "nalgebra 0.1.0 (git+https://github.com/sebcrozet/nalgebra#8288ebdfabdab002df9b47429fa176850b945f51)",
+ "nalgebra 0.1.0 (git+https://github.com/sebcrozet/nalgebra)",
 ]
 
 [[package]]
 name = "nphysics2df32"
 version = "0.1.0"
-source = "git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09"
+source = "git+https://github.com/sebcrozet/nphysics#27ebd4c8710787b2788e646f904a000b675536bf"
 dependencies = [
- "nalgebra 0.1.0 (git+https://github.com/sebcrozet/nalgebra#8288ebdfabdab002df9b47429fa176850b945f51)",
- "ncollide 0.1.0 (git+https://github.com/sebcrozet/ncollide#faa6a51c1e15b97c773b1ebae926f007cc3737bf)",
+ "nalgebra 0.1.0 (git+https://github.com/sebcrozet/nalgebra)",
+ "ncollide 0.2.0 (git+https://github.com/sebcrozet/ncollide)",
 ]
 
 [[package]]
 name = "nphysics_testbed2d"
 version = "0.1.0"
 dependencies = [
- "nphysics2df32 0.1.0 (git+https://github.com/sebcrozet/nphysics#73a46c59ca0608367233a1e03cb20591766a4d09)",
- "rust-sfml 0.9.0 (git+https://github.com/jeremyletang/rust-sfml#192810c53b5c5f90230b0bbd08f0d1bacd156823)",
+ "nphysics2df32 0.1.0 (git+https://github.com/sebcrozet/nphysics)",
+ "rust-sfml 0.9.0 (git+https://github.com/jeremyletang/rust-sfml)",
 ]
 
 [[package]]
 name = "rust-sfml"
 version = "0.9.0"
-source = "git+https://github.com/jeremyletang/rust-sfml#192810c53b5c5f90230b0bbd08f0d1bacd156823"
+source = "git+https://github.com/jeremyletang/rust-sfml#2b829b899b1eb4de4ce06c48c5ca4d8d390eda41"
 

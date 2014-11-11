@@ -43,7 +43,7 @@ impl<'a> Object for Lines<'a> {
 
     fn draw(&self, rw: &mut graphics::RenderWindow) {
         let body      = self.body.borrow();
-        let transform = body.transform_ref() * self.delta;
+        let transform = *body.transform_ref() * self.delta;
 
         let vs = self.vertices.deref();
 
